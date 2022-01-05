@@ -1,0 +1,25 @@
+pre{
+  white-space: pre-wrap;
+  word-wrap:  break-word;
+
+}
+
+.txtDisplay {
+  padding: 2px;
+  
+}
+
+.txtInput {
+  background-color: red;
+  outline: none;
+  resize: none;
+  border: 0px;
+}
+
+.container{
+  margin-left: 2px;
+  margin-top: 10px;
+  position: fixed;
+  max-width: 60%;
+  width: 60%
+}
