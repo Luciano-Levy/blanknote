@@ -6,11 +6,10 @@ pre{
 
 .txtDisplay {
   padding: 2px;
-  
+
 }
 
 .txtInput {
-  background-color: red;
   outline: none;
   resize: none;
   border: 0px;

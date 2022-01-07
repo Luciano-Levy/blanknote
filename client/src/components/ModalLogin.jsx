@@ -12,8 +12,8 @@ function ModalLogin(props) {
 
   function handleLogin(e){
     e.preventDefault();
-    //console.log(props.query)
     localStorage.setItem('username', username);
+    postUser(username);
     props.Setlogin(false);
 
   };
@@ -22,7 +22,7 @@ function ModalLogin(props) {
   return(
     <div className='cont'>
       <div className='modal'>
-          <form className='modal-content' onSubmit={handleLogin} method='post' action='/'>
+          <form className='modal-content' onSubmit={handleLogin}>
             <input type='text' placeholder='No te conozco... me decis quien sos?' onChange={handleChange}/>
           </form>
         </div>
@@ -32,5 +32,17 @@ function ModalLogin(props) {
 };
 
 
+export async function postUser(user){
+
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({user:user,txt: ''})
+  };
+
+  const rawResponse = await fetch("/api", requestOptions);
+
+
+}
 
 export default ModalLogin;

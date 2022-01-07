@@ -17,7 +17,8 @@ function Text() {
 
   //guardado del texto en db, cada rende
   useEffect(() => {
-    console.log('guardado')
+    updateTxt(txt)
+
   }
 );
 
@@ -66,6 +67,18 @@ export function Display(props){
   );
 };
 
+export async function updateTxt(txt){
+
+  const requestOptions = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({user:localStorage.getItem('username'),txt: txt})
+  };
+
+  await fetch("/api", requestOptions);
+
+
+}
 
 
 
