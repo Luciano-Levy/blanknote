@@ -1,5 +1,5 @@
 import express from 'express';
-import {mongoUsers} from './mongodb.js'
+import {mongoUsers, mongoRetrieve} from './mongodb.js'
 
 
 const PORT = process.env.PORT || 3001;
@@ -13,8 +13,23 @@ app.listen(PORT, () =>
   console.log(`Server on port ${PORT}`));
 
 
+app.get("/api/:user", (req, res) => {
+
+
+
+  mongoRetrieve(req.params.user, docText => {
+    res.send(JSON.stringify({text: docText}))
+  })
+
+
+
+
+
+})
+
+
 app.all("/api" , (req,res) => {
-  console.log('si');
+
   mongoUsers(req.body.user, req.body.txt,req.method);
 
 });
