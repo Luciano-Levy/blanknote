@@ -1,28 +1,65 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './styles/text.css';
-import useIdentificator from './modulos/idenficatorHook.js';
-import ModalLogin from './components/ModalLogin'
+import ModalLogin from './components/ModalLogin.jsx';
+import Display from './components/Display.jsx';
+import Input from './components/Input.jsx';
+import ConfigMenu from './components/ConfigMenu.jsx'
 
 
 function Text() {
 
+  const container = useRef(null)
+
   const[txt, Settxt] = useState('');
 
-  //true == escribir
   const[shift, Setshift] = useState(true);
 
-  //const[user, SetUser] = useState('')
+  const[login, Setlogin] = useState(true);
 
-  const[login, Setlogin] = useState(true)
 
-  //guardado del texto en db, cada rende
+
+  //idenifacador
+  useEffect(()=> {
+
+    const user = localStorage.getItem('username');
+    if (user != null ){
+      Setlogin(false);
+    }
+    else {
+        Setlogin(true);
+    };
+  },[]);
+
+  //cargador
   useEffect(() => {
-    updateTxt(txt)
 
+      //hacer efecto CSS para ocultar que el useEffect tarda en hacer el fetch y mostrar los datos en el text area.
+
+      const user = localStorage.getItem('username');
+      if(user != null){
+
+
+      const requestOptions = {
+        method: 'GET',
+      };
+
+      fetch(`api/${user}`, requestOptions).then(response => response.json()).then(data => Settxt(data.text));
+
+
+
+    };
+
+
+  },[])
+
+
+  //guardado del texto en db, cada ves que cambie el texto
+  useEffect(() => {
+    updateTxt(txt);
   }
-);
+,[txt]);
 
-  useIdentificator(Setlogin, Settxt);
+
 
   //maneja el cambio de valores y intercambia visibilidad con el estatico
   function changeInpt(e){
@@ -30,20 +67,23 @@ function Text() {
     if (textareaValue.length > 0) {
       Setshift(false);
       Settxt(textareaValue);
-
     };
   };
 
   function changeDispl(e){
+
     Setshift(true);
+
   };
   //
 
   return(
-    <div>
+    <div id='main'>
 
-      <div className='container'>
-        <Input changeInpt={changeInpt} shift={shift}></Input>
+      <ConfigMenu containerRef={container}></ConfigMenu>
+
+      <div className='container' ref={container}>
+        <Input changeInpt={changeInpt} txt={txt} shift={shift}></Input>
         <Display changeDispl={changeDispl} txt={txt} shift={shift}></Display>
       </div>
       {login && <ModalLogin Setlogin={Setlogin}></ModalLogin>}
@@ -51,21 +91,8 @@ function Text() {
   );
 };
 
-export function Input(props){
-  return(
-    <>
-      <textarea className='txtInput' spellCheck='true' placeholder='Escribi lo que quieras!!' autoFocus onBlur={props.changeInpt} style={{display: props.shift ? 'block' : 'none'}}></textarea>
-    </>
-  );
-};
 
-export function Display(props){
-  return(
-    <div className='txtDisplay' onClick={props.changeDispl} style={{display: props.shift ? 'none' : 'block'}} >
-      <pre >{props.txt}</pre>
-    </div>
-  );
-};
+
 
 export async function updateTxt(txt){
 
@@ -75,7 +102,7 @@ export async function updateTxt(txt){
     body: JSON.stringify({user:localStorage.getItem('username'),txt: txt})
   };
 
-  await fetch("/api", requestOptions);
+   fetch("/api", requestOptions);
 
 
 }
