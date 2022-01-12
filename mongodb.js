@@ -1,11 +1,14 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const userSchema = new mongoose.Schema({
   user: String,
   text: String
 },{collection: 'users'});
 
-await mongoose.connect('mongodb+srv://lucianolevy:blank-txt-db@cluster0.l3zvv.mongodb.net/blanktxt?retryWrites=true&w=majority');
+await mongoose.connect(process.env.MONGO_URI);
 const Users = await mongoose.model('Users', userSchema);
 
 mongoUsers().catch(err => console.log(err));
