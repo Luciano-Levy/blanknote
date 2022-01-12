@@ -1,0 +1,95 @@
+.configBox{
+  margin-right: 0px;
+  padding: 0px;
+  margin-left: auto;
+  width: 25%;
+}
+
+.icon{
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-left: auto;
+  width: 16px;
+  height: 16px
+}
+
+.configForm{
+  border-left: 3px groove #eeeeee;
+  padding: 5px;
+  background-color: #cccccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+
+form {
+
+  animation: slideIn 0.7s ease-out
+
+}
+
+@keyframes slideIn {
+  from {
+   margin-left: 100%;
+
+ }
+
+ to {
+   margin-left: 0%;
+
+ }
+}
+
+.configForm * {
+  width: 95%;
+  height: 30%;
+  flex-shrink: 1
+
+}
+
+.configForm label {
+    margin-left: 4px;
+    margin-bottom: 6px;
+    height: min-content
+}
+
+.configForm div {
+  margin-bottom: 5px;
+  height: 10%
+}
+
+.configForm input {
+  margin-left: 2px;
+  border-radius: 50px;
+  padding: 10px;
+  border: 0px
+}
+
+.configForm input[type='color'] {
+  border-radius: 0px;
+  width: 50%;
+  height: 30%;
+  padding: 0px
+}
+
+.configForm .icon {
+  padding: 0px;
+  margin: 0px;
+  margin-left: auto;
+  height: 15%;
+  width: 16px
+}
+
+@media screen and (max-height: 1000px){
+
+    .configForm{
+      justify-content: space-around;
+    }
+
+
+    .configForm div {
+      height: 100%
+    }
+
+}

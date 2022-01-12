@@ -1,12 +1,14 @@
+#main{
+  display: inline-flex;
+}
+
 pre{
   white-space: pre-wrap;
   word-wrap:  break-word;
-
 }
 
 .txtDisplay {
   padding: 2px;
-
 }
 
 .txtInput {
@@ -16,9 +18,21 @@ pre{
 }
 
 .container{
-  margin-left: 2px;
+  margin-left: 5px;
   margin-top: 10px;
   position: fixed;
   max-width: 60%;
   width: 60%
+}
+
+textarea{
+  
+  font-size: inherit;
+}
+
+/* me estoy repitiendo de modal pero me parece mas logico separar las abastraciones
+*/
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
 }
