@@ -5,7 +5,7 @@ import Display from './components/Display.jsx';
 import Input from './components/Input.jsx';
 import ConfigMenu from './components/ConfigMenu.jsx'
 
-
+// usar destructuracion de ahora en mas, es mas facil saber que pide el componente
 function Text() {
 
   const container = useRef(null)
