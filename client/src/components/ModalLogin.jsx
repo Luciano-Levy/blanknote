@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../styles/modal.css';
 
-//vamos con express me soluciona la vida
+//Tener las funciones en otro archivo me facilita el testing y la reutiizacion
 function ModalLogin(props) {
 
   const[username,Setusername] = useState('');
@@ -22,8 +22,8 @@ function ModalLogin(props) {
   return(
     <div className='cont'>
       <div className='modal'>
-          <form className='modal-content' onSubmit={handleLogin}>
-            <input type='text' placeholder='No te conozco... me decis quien sos?' onChange={handleChange}/>
+          <form className='modalContent' onSubmit={handleLogin} name='form'>
+            <input type='text' autoFocus placeholder='No te conozco... me decis quien sos?' onChange={handleChange}/>
           </form>
         </div>
     </div>
