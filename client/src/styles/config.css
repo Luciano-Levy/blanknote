@@ -19,13 +19,13 @@
   background-color: #cccccc;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
 
 }
 
-form {
+.configBox form {
 
-  animation: slideIn 0.7s ease-out
+  animation: slideIn 0.7s
 
 }
 
@@ -56,7 +56,7 @@ form {
 
 .configForm div {
   margin-bottom: 5px;
-  height: 10%
+  height: 100%
 }
 
 .configForm input {
@@ -81,15 +81,19 @@ form {
   width: 16px
 }
 
-@media screen and (max-height: 1000px){
+@media screen and (max-width: 768px){
 
-    .configForm{
-      justify-content: space-around;
+    .configBox{
+
+      pointer-events: none;
+      z-index: 1;
+      width: 100%
+    }
+
+    .configBox > * {
+      pointer-events: all;
     }
 
 
-    .configForm div {
-      height: 100%
-    }
 
 }
