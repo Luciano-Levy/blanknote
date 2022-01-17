@@ -30,6 +30,23 @@ app.get("/api/:user", (req, res) => {
 
 app.all("/api" , (req,res) => {
 
-  mongoUsers(req.body.user, req.body.txt,req.method);
+  mongoUsers(req.body.user, req.body.txt,req.method, dbRes => {
+    switch (dbRes) {
+      case 'User Saved':
+        res.status(201)
+        res.send(JSON.stringify({text: 'docText'}))
+        break;
+      case 'User Updated':
+        res.status(200)
+        res.send(JSON.stringify({text: 'docText'}))
+        break;
+      case 'User Existent':
+        res.status(403)
+        res.send(JSON.stringify({text: 'docText'}))
+        break
+      default:
+
+    }
+  });
 
 });

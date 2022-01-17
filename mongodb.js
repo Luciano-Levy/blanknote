@@ -11,10 +11,13 @@ const userSchema = new mongoose.Schema({
 await mongoose.connect(process.env.MONGO_URI);
 const Users = await mongoose.model('Users', userSchema);
 
-mongoUsers().catch(err => console.log(err));
-//muchos casos limites propenso a errores (ussuario vacio)
+
+//casos limites propenso a errores (ussuario vacio)
+//crearse el localStorage a mano y acceder a otros
+
+
 //seria mas claro devolver un objeto con metodos
-export async function mongoUsers (user,txt,method){
+export const mongoUsers =  function (user,txt,method,callback){
 
 
 
@@ -28,12 +31,18 @@ export async function mongoUsers (user,txt,method){
 
       await newUser.save();
 
+      return callback('User Saved')
+
     }else if (method == 'PUT'){
       // reemplazar el texto
-      console.log(txt)
+
 
       const updateUser = await Users.findOneAndUpdate({user: user}, {text: txt});
 
+      return callback('User Updated')
+
+    }else{
+      return callback("User Existent")
     };
 
 
@@ -47,7 +56,7 @@ export async function mongoUsers (user,txt,method){
 export const  mongoRetrieve = function(user, callback){
 
   Users.findOne({user:user}, (err, doc) => {
-    console.log(doc);
+
     return callback(doc.toObject().text)
   })
 
