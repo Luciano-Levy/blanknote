@@ -1,8 +1,8 @@
 import {React, useState, useEffect} from 'react';
 import '../styles/config.css'
+import Config from './Config.jsx'
 import {ReactComponent as ConfigIcon} from '../images/config.svg';
-import {ReactComponent as CrossIcon} from '../images/cross.svg';
-import rgbHex from 'rgb-hex';
+import {configsInit} from './functions.js'
 
 export default function CongifMenu({containerRef}){
 
@@ -16,60 +16,7 @@ export default function CongifMenu({containerRef}){
   // config searcher
   useEffect(()=>{
 
-    const configs = ['color', 'backgroundColor', 'font', 'fontSize']
-
-    // es repetitivo pero es mas seguro que estar usando plantillas literales con eval
-    // bucar una manera DRY ya que los nombres de los estilos dependen de desde que objeto
-
-
-    configs.map(a => {
-      const configLocal = localStorage.getItem(a);
-      if (configLocal != null){
-
-      switch (a) {
-        case 'color':
-          Setcolor(configLocal)
-          break;
-        case 'backgroundColor':
-          SetbackgroundColor(configLocal)
-          break;
-        case 'font':
-          Setfont(configLocal)
-          break;
-        case 'fontSize':
-          SetfontSize(configLocal)
-          break;
-
-
-      }
-    }else{
-
-      switch (a) {
-        case 'color':
-          const color = '#' + rgbHex(window.getComputedStyle(document.body).getPropertyValue('color'))
-          Setcolor(color)
-          localStorage.setItem('color', color)
-          break;
-        case 'backgroundColor':
-          const backgroundColor =  '#' + rgbHex(window.getComputedStyle(document.body).getPropertyValue('background-color'))
-          SetbackgroundColor(backgroundColor)
-          localStorage.setItem('backgroundColor', backgroundColor)
-          break;
-        case 'font':
-          const font = window.getComputedStyle(document.body).getPropertyValue('font-family')
-          Setfont(font)
-          localStorage.setItem('font',font)
-          break;
-        case 'fontSize':
-          const fontSize =  window.getComputedStyle(document.body).getPropertyValue('font-size')
-          SetfontSize(fontSize)
-          localStorage.setItem('fontSize', fontSize)
-          break;
-
-
-    }
-  }
-})
+    configsInit(Setcolor,SetbackgroundColor,Setfont,SetfontSize)
 
   },[])
 
@@ -83,6 +30,7 @@ export default function CongifMenu({containerRef}){
   })
 
   function configMenuHandler(e){
+    e.preventDefault()
     Setshift(!shift);
   }
 
@@ -111,39 +59,8 @@ export default function CongifMenu({containerRef}){
   // Seria mejor pasar las configuraciones en un Map o objeto para sacarle rigidez
   return(
     <div className='configBox'>
-      <ConfigIcon className='icon' onClick={configMenuHandler} style={{display: shift ? 'block' : 'none'}} ></ConfigIcon>
-      <Config shift={shift} configHandler={configHandler} configMenuHandler={configMenuHandler} backgroundColor={backgroundColor} placeholders={[font,fontSize,color,backgroundColor]}></Config>
+      <button  style={{display: shift ? 'block' : 'none'}}><ConfigIcon className='icon'  onClick={configMenuHandler}  ></ConfigIcon></button>
+      <Config shift={shift} configHandler={configHandler} configMenuHandler={configMenuHandler}  placeholders={[font,fontSize,color,backgroundColor]}></Config>
     </div>
-  );
-};
-
-export function Config(props){
-
-  // hacer los manejadores de eventos en Ap
-  // si se agregan mas configs generar los elementos dinamicamente
-  return(
-
-    <form style={{display: props.shift ? 'none' : 'block'}}>
-
-      <div className='configForm'>
-        <CrossIcon className='icon' onClick={props.configMenuHandler}></CrossIcon>
-        <div>
-          <label>Fuente</label>
-          <input id='font' type="text"  placeholder={props.placeholders[0]} onChange={props.configHandler}/>
-        </div>
-        <div>
-          <label>Tamaño fuente</label>
-          <input type="text" id='fontSize' placeholder={props.placeholders[1]} onChange={props.configHandler} />
-        </div>
-        <div>
-          <label>Color</label>
-          <input type="color" id='color' defaultValue={props.placeholders[2]} key={`${Math.floor((Math.random() * 1000))}-min`} onChange={props.configHandler} />
-        </div>
-        <div>
-          <label>Fondo</label>
-          <input type="color" id='backgroundColor' defaultValue={props.placeholders[3]} key={`${Math.floor((Math.random() * 1000))}-min`}  onChange={props.configHandler}/>
-        </div>
-      </div>
-    </form>
   );
 };
