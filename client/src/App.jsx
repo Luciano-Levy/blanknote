@@ -33,7 +33,7 @@ function Text() {
   //cargador
   useEffect(() => {
 
-      //hacer efecto CSS para ocultar que el useEffect tarda en hacer el fetch y mostrar los datos en el text area.
+      
 
       const user = localStorage.getItem('username');
       if(user != null){

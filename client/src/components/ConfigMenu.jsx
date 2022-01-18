@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import {React, useState, useEffect} from 'react';
 import '../styles/config.css'
 import Config from './Config.jsx'
@@ -37,7 +38,7 @@ export default function CongifMenu({containerRef}){
   function configHandler(e){
     switch (e.target.id) {
       case 'color':
-        console.log('aca');
+        
         Setcolor(e.target.value)
         localStorage.setItem('color', e.target.value)
         break;
