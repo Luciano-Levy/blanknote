@@ -14,6 +14,16 @@
   border-bottom: 3px solid #cccccc
 }
 
+.again {
+
+  animation: blinking 2s
+
+}
+
+.nada{
+
+  animation: 'none'
+}
 .modalContent{
 
   color: inherit;
@@ -33,6 +43,17 @@
   from {opacity: 0}
   to {opacity: 1}
 }
+
+@keyframes blinking {
+
+  0%{ border-color: #FF0000}
+  25%{ border-color: #cccccc}
+  50%{ border-color: #FF0000}
+  75%{ border-color: #cccccc}
+  90%{border-color: #FF0000}
+  100%{border-color: #cccccc}
+}
+
 .modalContent input {
   padding: 10px;
   border: none

@@ -1,3 +1,11 @@
+
+.configForm * {
+  width: 95%;
+  height: 30%;
+  flex-shrink: 1
+
+}
+
 .configBox{
   margin-right: 0px;
   padding: 0px;
@@ -6,11 +14,13 @@
 }
 
 .icon{
+  
   margin-right: 5px;
   margin-top: 5px;
   margin-left: auto;
   width: 16px;
-  height: 16px
+  height: 16px;
+
 }
 
 .configForm{
@@ -41,13 +51,6 @@
  }
 }
 
-.configForm * {
-  width: 95%;
-  height: 30%;
-  flex-shrink: 1
-
-}
-
 .configForm label {
     margin-left: 4px;
     margin-bottom: 6px;
@@ -73,12 +76,29 @@
   padding: 0px
 }
 
-.configForm .icon {
+button {
+  background: transparent;
+  border: none;
+  width: min-content;
+  height: min-content;
+  margin-left: auto;
+
+}
+
+.configForm button {
+  background: transparent;
+  border: none;
+  width: min-content;
+  height: min-content;
+  margin-left: auto;
   padding: 0px;
+}
+
+#crossDiv {
   margin: 0px;
   margin-left: auto;
-  height: 15%;
-  width: 16px
+  width: fit-content;
+  height: 30%
 }
 
 @media screen and (max-width: 768px){
