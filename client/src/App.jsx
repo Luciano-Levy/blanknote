@@ -62,6 +62,7 @@ function Text() {
 
 
   //maneja el cambio de valores y intercambia visibilidad con el estatico
+  //se puede hacer en una sola funcion
   function changeInpt(e){
     const textareaValue = e.target.value;
     if (textareaValue.length > 0) {
