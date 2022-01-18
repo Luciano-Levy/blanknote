@@ -1,17 +1,18 @@
+/* eslint-disable default-case */
 import rgbHex from 'rgb-hex'
 
 
-export function configsInit(Setcolor,SetbackgroundColor,Setfont,SetfontSize){
+export function configsInit(Setcolor, SetbackgroundColor, Setfont, SetfontSize) {
 
-  const configs = ['color', 'backgroundColor', 'fontSize' , 'font']
-  
-    // es repetitivo pero es mas seguro que estar usando plantillas literales con eval
-    // bucar una manera DRY ya que los nombres de los estilos dependen de desde que objeto
+  const configs = ['color', 'backgroundColor', 'fontSize', 'font']
+
+  // es repetitivo pero es mas seguro que estar usando plantillas literales con eval
+  // bucar una manera DRY ya que los nombres de los estilos dependen de desde que objeto
 
 
-    configs.map(a => {
-      const configLocal = localStorage.getItem(a);
-      if (configLocal != null){
+  configs.forEach(a => {
+    const configLocal = localStorage.getItem(a);
+    if (configLocal != null) {
 
       switch (a) {
         case 'color':
@@ -29,7 +30,7 @@ export function configsInit(Setcolor,SetbackgroundColor,Setfont,SetfontSize){
 
 
       }
-    }else{
+    } else {
 
       switch (a) {
         case 'color':
@@ -38,33 +39,30 @@ export function configsInit(Setcolor,SetbackgroundColor,Setfont,SetfontSize){
           localStorage.setItem('color', color)
           break;
         case 'backgroundColor':
-          const backgroundColor =  '#' + rgbHex(window.getComputedStyle(document.body).getPropertyValue('background-color'))
+          const backgroundColor = '#' + rgbHex(window.getComputedStyle(document.body).getPropertyValue('background-color'))
           SetbackgroundColor(backgroundColor)
           localStorage.setItem('backgroundColor', backgroundColor)
           break;
         case 'font':
           const font = window.getComputedStyle(document.body).getPropertyValue('font-family')
           Setfont(font)
-          localStorage.setItem('font',font)
+          localStorage.setItem('font', font)
           break;
         case 'fontSize':
-          const fontSize =  window.getComputedStyle(document.body).getPropertyValue('font-size')
+          const fontSize = window.getComputedStyle(document.body).getPropertyValue('font-size')
           SetfontSize(fontSize)
           localStorage.setItem('fontSize', fontSize)
           break;
 
 
+      }
     }
-  }
-})
+  })
 
 
 
 
 
-
-
-  }
 
 
 }
