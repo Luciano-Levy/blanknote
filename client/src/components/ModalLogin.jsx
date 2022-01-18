@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react';
+import Base64 from 'crypto-js/sha256'
 import '../styles/modal.css';
 
 //Tener las funciones en otro archivo me facilita el testing y la reutiizacion
@@ -16,11 +17,13 @@ function ModalLogin(props) {
   //cath error en consola
   function handleLogin(e){
     e.preventDefault();
+    const usernameHash = Base64(username)
+
 
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({user:username,txt: ''})
+      body: JSON.stringify({user:usernameHash,txt: ''})
     };
 
     fetch("/api", requestOptions).then(response =>{
@@ -32,7 +35,7 @@ function ModalLogin(props) {
         },2000)
 
       }else{
-        localStorage.setItem('username', username);
+        localStorage.setItem('username', usernameHash);
         props.Setlogin(false);
       }
     })
