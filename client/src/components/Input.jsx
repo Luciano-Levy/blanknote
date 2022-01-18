@@ -6,7 +6,7 @@ export default function Input(props){
 
   return(
     <>
-      <textarea className='txtInput' spellCheck='true' placeholder='Escribi lo que quieras!!' onBlur={props.changeInpt} style={{display: props.shift ? 'block' : 'none'}} defaultValue={props.txt}></textarea>
+      <textarea className='txtInput' spellCheck='false' placeholder='Escribi lo que quieras!!' onBlur={props.changeInpt} style={{display: props.shift ? 'block' : 'none'}} defaultValue={props.txt}></textarea>
     </>
   );
 };
