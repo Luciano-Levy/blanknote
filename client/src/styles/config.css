@@ -1,20 +1,18 @@
-
 .configForm * {
   width: 95%;
   height: 30%;
   flex-shrink: 1
-
 }
 
-.configBox{
+.configBox {
   margin-right: 0px;
   padding: 0px;
   margin-left: auto;
   width: 25%;
 }
 
-.icon{
-  
+.icon {
+
   margin-right: 5px;
   margin-top: 5px;
   margin-left: auto;
@@ -23,7 +21,7 @@
 
 }
 
-.configForm{
+.configForm {
   border-left: 3px groove #eeeeee;
   padding: 5px;
   background-color: #cccccc;
@@ -36,25 +34,24 @@
 .configBox form {
 
   animation: slideIn 0.7s
-
 }
 
 @keyframes slideIn {
   from {
-   margin-left: 100%;
+    margin-left: 100%;
 
- }
+  }
 
- to {
-   margin-left: 0%;
+  to {
+    margin-left: 0%;
 
- }
+  }
 }
 
 .configForm label {
-    margin-left: 4px;
-    margin-bottom: 6px;
-    height: min-content
+  margin-left: 4px;
+  margin-bottom: 6px;
+  height: min-content
 }
 
 .configForm div {
@@ -101,18 +98,18 @@ button {
   height: 30%
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
 
-    .configBox{
+  .configBox {
 
-      pointer-events: none;
-      z-index: 1;
-      width: 100%
-    }
+    pointer-events: none;
+    z-index: 1;
+    width: 100%
+  }
 
-    .configBox > * {
-      pointer-events: all;
-    }
+  .configBox>* {
+    pointer-events: all;
+  }
 
 
 
