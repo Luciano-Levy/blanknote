@@ -16,8 +16,11 @@ los datos arraigados.
 
 -Tambien dearrole un login modal y una interfaz de personalizacion dinamica, teniendo en cuenta un diseno responsive
 
+-Agrege animaciones con CSS para hacer la interfaz mas intuitiva
 
--En el caso de que se borre el localStorage y se intente acceder (mediante devTools o el login modal) con un usuario existente esta solventado.No quise implementar un login clasico con contrasena para simplificar la experiencia, en el caso de que un usuario limpie sus datos del navegador, perderia su informacion.
+-En el caso de que se borre el localStorage y se intente acceder (mediante devTools o el login modal) con un usuario existente esta solventado
+(el user esta codificado y la api se fija si hay el user ya existe).No quise implementar un login clasico con contrasena para simplificar la experiencia, en el caso de que un usuario limpie sus datos del navegador, perderia su informacion.
+
 
 -Escribi test unitarios y uno de integracion para el frontend tratando de cubrir lo maximo posible del codigo.
 
