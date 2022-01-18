@@ -2,6 +2,7 @@ import express from 'express';
 import {mongoUsers, mongoRetrieve} from './mongodb.js'
 
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3001;
 
 const app = express();

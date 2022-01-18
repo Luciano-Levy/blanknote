@@ -43,7 +43,7 @@ export const mongoUsers =  function (user,txt,method,callback){
 
     }else{
       return callback("User Existent")
-    };
+    }
 
 
 
