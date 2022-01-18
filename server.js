@@ -1,13 +1,16 @@
 import express from 'express';
 import {mongoUsers, mongoRetrieve} from './mongodb.js'
+import * as path from 'path'
 
+
+const app = express();
+app.use(express.static(path.resolve(__dirname,'./client/build')))
 
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3001;
 
-app.use(express.static(path.resolve(__dirname,'./client/build')))
 
-const app = express();
+
 app.use(express.urlencoded());
 app.use(express.json());
 
