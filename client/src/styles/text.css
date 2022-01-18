@@ -5,6 +5,7 @@
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
+  font-family: inherit;
 }
 
 .txtDisplay {
@@ -26,7 +27,7 @@ pre {
 }
 
 textarea {
-
+  font-family: inherit;
   font-size: inherit;
 }
 
