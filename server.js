@@ -5,7 +5,7 @@ import * as path from 'path'
 
 const app = express();
 const {pathname: root} = new URL('./client/build', import.meta.url)
-app.use(express.static(path.resolve(root)))
+app.use(express.static(root))
 
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3001;
