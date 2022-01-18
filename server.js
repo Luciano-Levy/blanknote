@@ -5,6 +5,8 @@ import {mongoUsers, mongoRetrieve} from './mongodb.js'
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3001;
 
+app.use(express.static(path.resolve(__dirname,'./client/build')))
+
 const app = express();
 app.use(express.urlencoded());
 app.use(express.json());
